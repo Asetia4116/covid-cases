@@ -1,0 +1,75 @@
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Main
+{
+    public static void main (String args[])
+    {
+        JFrame f=new JFrame();
+
+        JMenuBar mb=new JMenuBar();
+        f.setJMenuBar(mb);
+
+        JMenu Cases=new JMenu("Cases/State");
+        mb.add(Cases);
+
+        JMenuItem Number=new JMenuItem("Number of cases");
+        Cases.add(Number);
+        Number.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                JOptionPane.showMessageDialog(f, "StateWise Cases in Tabular Format:\nState A: 1045 Cases State B: 6654 Cases State C: 2964 Cases");
+            }
+        });
+
+        JMenu Vaccine=new JMenu ("Check Vaccination Center");
+        mb.add(Vaccine);
+
+        JMenuItem Availability=new JMenuItem ("Check Availability");
+        Vaccine.add(Availability);
+        Availability.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                String selectedArea= JOptionPane.showInputDialog(f, "Enter your area:");
+                String[] availabile=
+                {
+                    "Center A - 6 Slots",
+                    "Center B - 2 Slots",
+                    "Center C - 7 Slots"
+                };
+                for(String data: availabile)
+                {
+                    if (data.contains(selectedArea))
+                    {
+                        JOptionPane.showMessageDialog(f, data);
+                        break;
+                    }
+                }
+            }
+        });
+
+        JMenu Help=new JMenu("Helpline Number");
+        mb.add(Help);
+
+        JMenuItem HelpLine = new JMenuItem("View Helpline Numbers");
+        Help.add(HelpLine);
+       HelpLine.addActionListener(new ActionListener() 
+       {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                JOptionPane.showMessageDialog(f, "COVID-19 Helpline Numbers:\n2366130388");
+            }
+       });
+
+       f.setSize(400,400);
+       f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       f.setVisible(true);
+    }
+
+}
